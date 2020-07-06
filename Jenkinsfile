@@ -1,15 +1,11 @@
 pipeline {
     agent any
     stages {
-      stage ("clone-master") {
+      stage ('clone-master') {
          when {
          branch 'master'
          }
-         steps {
-              git credentialsId: 'b5391243-fa5a-4198-b2d2-c1aff1ca5288', url: 'https://github.com/chauhan1986/Test.git' 
-                echo "$BRANCH"
-         }
-         stage ("build"){
+         stage ('build'){
             steps {
               echo "clone master"
             }
@@ -20,10 +16,6 @@ pipeline {
       stage ("clone-qa") {
          when {
          branch 'qa'
-         }
-         steps {
-              git credentialsId: 'b5391243-fa5a-4198-b2d2-c1aff1ca5288', url: 'https://github.com/chauhan1986/Test.git' 
-                echo "$BRANCH"
          }
          stage ("build"){
             steps {
@@ -37,12 +29,6 @@ pipeline {
          when {
          branch 'dev'
          }
-         steps {
-              git credentialsId: 'b5391243-fa5a-4198-b2d2-c1aff1ca5288', url: 'https://github.com/chauhan1986/Test.git' 
-                echo "$BRANCH"
-         }
-
-
       }
       stage ("build"){
             steps {
