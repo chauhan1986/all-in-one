@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-      stage ('clone-master') {
+      steps ('clone-master') {
          when {
          branch 'master'
          }
@@ -13,7 +13,7 @@ pipeline {
 
 
       }
-      stage ("clone-qa") {
+      steps ("clone-qa") {
          when {
          branch 'qa'
          }
