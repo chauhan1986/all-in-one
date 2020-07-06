@@ -1,40 +1,29 @@
 pipeline {
     agent any
-    stages {
-      steps ('clone-master') {
-         when {
-         branch 'master'
-         }
-         stage ('build'){
-            steps {
-              echo "clone master"
-            }
-         }
-
-
+    stages{
+      stage('build master'){
+        when {
+          branch 'master'
+        }
+        steps{
+          echo "hello master"
+        }
       }
-      steps ("clone-qa") {
-         when {
-         branch 'qa'
-         }
-         stage ("build"){
-            steps {
-              echo "clone qa"
-            }
-         }
-
-
+      stage('build dev'){
+        when {
+          branch 'master'
+        }
+        steps{
+          echo "hello dev"
+        }
       }
-      stage ("clone-dev") {
-         when {
-         branch 'dev'
-         }
+      stage('build qa'){
+        when {
+          branch 'master'
+        }
+        steps{
+          echo "hello qa"
+        }
       }
-      stage ("build"){
-            steps {
-              echo "clone dev"
-            }
-         }
-
     }
 }
